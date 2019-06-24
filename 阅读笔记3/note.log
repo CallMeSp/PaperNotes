@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.22)  24 JUN 2019 19:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.22)  24 JUN 2019 21:26
 entering extended mode
 **c:/Users/spwannasing/Documents/ç ”ä¸€ä¸‹å­¦æœŸ/è®ºæ–‡é˜…è¯»ç¬”è®°/é˜…è¯»ç¬”è®
 °3/note.tex
@@ -1785,41 +1785,95 @@ cmr/m/n/10.53937 paragraph|\C70/rm/m/n/10.53937/30 | \C70/rm/m/n/10.53937/68 8
 <12-1.png, id=411, 349.305pt x 331.2375pt>
 File: 12-1.png Graphic file (type png)
 <use 12-1.png>
-Package pdftex.def Info: 12-1.png  used on input line 453.
+Package pdftex.def Info: 12-1.png  used on input line 455.
 (pdftex.def)             Requested size: 216.81pt x 205.59761pt.
 <12-2.png, id=412, 359.84438pt x 279.29344pt>
 File: 12-2.png Graphic file (type png)
 <use 12-2.png>
-Package pdftex.def Info: 12-2.png  used on input line 460.
+Package pdftex.def Info: 12-2.png  used on input line 462.
 (pdftex.def)             Requested size: 195.12767pt x 151.45119pt.
 <12-3.png, id=413, 345.54094pt x 302.63063pt>
 File: 12-3.png Graphic file (type png)
 <use 12-3.png>
-Package pdftex.def Info: 12-3.png  used on input line 464.
+Package pdftex.def Info: 12-3.png  used on input line 466.
 (pdftex.def)             Requested size: 195.12767pt x 170.89888pt.
- [22 <./12-1.png> <./12-2.png> <./12-3.png>] [23]
-Overfull \hbox (16.8647pt too wide) in paragraph at lines 472--472
+ [22 <./12-1.png> <./12-2.png> <./12-3.png>]
+<13-1.png, id=426, 726.46407pt x 429.10312pt>
+File: 13-1.png Graphic file (type png)
+<use 13-1.png>
+Package pdftex.def Info: 13-1.png  used on input line 476.
+(pdftex.def)             Requested size: 433.62pt x 256.13469pt.
+ [23 <./13-1.png>] [24]
+Overfull \hbox (16.8647pt too wide) in paragraph at lines 508--508
 []\OT1/cmr/bx/n/15.05624 Reinforced Mnemonic Reader for Ma-chine Read-ing Com-
  []
 
+<14-1.png, id=449, 524.71031pt x 789.70032pt>
+File: 14-1.png Graphic file (type png)
+<use 14-1.png>
+Package pdftex.def Info: 14-1.png  used on input line 513.
+(pdftex.def)             Requested size: 346.89731pt x 522.10756pt.
+
+Overfull \hbox (6.0006pt too wide) in paragraph at lines 509--514
+[]\C70/rm/m/n/10.53937/99 – \C70/rm/m/n/10.53937/51 H \C70/rm/m/n/10.53937/63 Ð
+ \C70/rm/m/n/10.53937/51 ú \C70/rm/m/n/10.53937/4e †   \C70/rm/m/n/10.53937/79 
+Í\OT1/cmr/m/n/10.53937 reattention\C70/rm/m/n/10.53937/67 : \C70/rm/m/n/10.5393
+7/52 6|\C70/rm/m/n/10.53937/ff | \C70/rm/m/n/10.53937/80 ý \C70/rm/m/n/10.5393
+7/59  \C70/rm/m/n/10.53937/8b ¿ \C70/rm/m/n/10.53937/95 î \C70/rm/m/n/10.53937
+/4e 4 \C70/rm/m/n/10.53937/65 ö \C70/rm/m/n/10.53937/5b X \C70/rm/m/n/10.53937/
+50 ¨ \C70/rm/m/n/10.53937/76 „\OT1/cmr/m/n/10.53937 multi-round\C70/rm/m/n/10.5
+3937/5b ù \C70/rm/m/n/10.53937/9f P \C70/rm/m/n/10.53937/76 „ \C70/rm/m/n/10.53
+937/8f Ç \C70/rm/m/n/10.53937/53 » \C70/rm/m/n/10.53937/76 „\OT1/cmr/m/n/10.539
+37 attentions|\C70/rm/m/n/10.53937/ff |
+ []
+
+
+Overfull \hbox (6.16452pt too wide) in paragraph at lines 509--514
+\C70/rm/m/n/10.53937/67 e \C70/rm/m/n/10.53937/7e Æ \C70/rm/m/n/10.53937/53  \
+C70/rm/m/n/10.53937/5f S \C70/rm/m/n/10.53937/52 M \C70/rm/m/n/10.53937/76 „ \C
+70/rm/m/n/10.53937/6c è \C70/rm/m/n/10.53937/61  \C70/rm/m/n/10.53937/52 ›|\C7
+0/rm/m/n/10.53937/30 | \C70/rm/m/n/10.53937/53 æ \C70/rm/m/n/10.53937/59  \C7
+0/rm/m/n/10.53937/63 Ð \C70/rm/m/n/10.53937/51 ú \C70/rm/m/n/10.53937/4e †   \C
+70/rm/m/n/10.53937/79 Í \C70/rm/m/n/10.53937/65 ° \C70/rm/m/n/10.53937/76 „ \C7
+0/rm/m/n/10.53937/4f  \C70/rm/m/n/10.53937/53  \C70/rm/m/n/10.53937/65 ¹ \C70
+/rm/m/n/10.53937/5f |\C70/rm/m/n/10.53937/ff | \C70/rm/m/n/10.53937/53 ë \C70
+/rm/m/n/10.53937/50 Z\OT1/cmr/m/n/10.53937 dynamic-critical re-in-force-ment le
+arn-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 516--517
+
+ []
+
+[25 <./14-1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 524--525
+
+ []
+
+<14-2.png, id=458, 346.29375pt x 231.86626pt>
+File: 14-2.png Graphic file (type png)
+<use 14-2.png>
+Package pdftex.def Info: 14-2.png  used on input line 533.
+(pdftex.def)             Requested size: 216.81pt x 145.17078pt.
 
 AED: lastpage setting LastPage
-[24]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 475.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 475.
+[26 <./14-2.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 536.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 536.
  (note.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 475.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 475.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 536.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 536.
 Package rerunfilecheck Info: File `note.out' has not changed.
 (rerunfilecheck)             Checksum: 6EF48A7C071E61433584FDB83F29DE40;5399.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 475.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 536.
  ) 
 Here is how much of TeX's memory you used:
- 30599 strings out of 492895
- 512316 string characters out of 3120933
+ 30706 strings out of 492895
+ 513626 string characters out of 3120933
  684746 words of memory out of 3000000
- 33797 multiletter control sequences out of 15000+200000
- 569874 words of font info for 163 fonts, out of 3000000 for 9000
+ 33875 multiletter control sequences out of 15000+200000
+ 570414 words of font info for 165 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,20n,63p,1022b,494s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/s
@@ -1847,31 +1901,32 @@ WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.
 ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts
 /simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDO
 WS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><
-C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/Users/spwannasing/
-AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:
-/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmbx12.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmbx7.pfb><C:/Users/spwannasing/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/spwannasing/AppD
-ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:
-/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmmi10.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmmi5.pfb><C:/Users/spwannasing/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/spwannasing/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users
-/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-mr12.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmr17.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/spwannasing/AppData/Local
-/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/spwannas
-ing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmsy5.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/spwannasing/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on note.pdf (24 pages, 2387363 bytes).
+C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/sims
+un.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/Users/spwannasing/AppData/Local/Program
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/spwannasing/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/U
+sers/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmbx7.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmex10.pfb><C:/Users/spwannasing/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/spwannasing/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/U
+sers/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmmi5.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi7.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/spwannasing/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/sp
+wannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr1
+7.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmr5.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/spwannasing/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/spwannasin
+g/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C
+:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmsy7.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/symbols/msbm10.pfb>
+Output written on note.pdf (26 pages, 2642597 bytes).
 PDF statistics:
- 719 PDF objects out of 1000 (max. 8388607)
- 101 named destinations out of 1000 (max. 500000)
- 528 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 769 PDF objects out of 1000 (max. 8388607)
+ 123 named destinations out of 1000 (max. 500000)
+ 551 words of extra memory for PDF output out of 10000 (max. 10000000)
 

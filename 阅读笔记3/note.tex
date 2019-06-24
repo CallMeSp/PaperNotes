@@ -448,6 +448,8 @@ $$
 \newpage
 \section{Joint Training of Candidate Extraction and Answer Selection for Reading Comprehension}
 大多数方法以独立的方式对答案进行建模，而忽略了它与其他candidate之间的关系。本文提出了一个两阶段的阅读理解框架：extract-then-select。
+我们首先从段落中提取答案候选人，然后结合所有candidata的信息选择最终答案，此外，我们将候选提取作为一个潜在变量，将两阶段过程与强化学习结合起来进行训练。
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{12-1.png}
@@ -467,9 +469,68 @@ $$
 
 \newpage
 \section{Multi-Passage Machine Reading Comprehension with Cross-Passage Answer Verification}
+multi-passage相比single Passage更加具有挑战性。我们提出了一种端到端的神经模型，使来自不同段落的答案候选人能够根据内容表示相互验证。
+我们联合训练了三个模块，它们可以根据三个因素来预测最终答案：答案边界、答案内容和交叉答案验证。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{13-1.png}
+\end{figure}
+\begin{enumerate}
+	\item Answer Boundary Prediction
+	\begin{equation}
+	\begin{aligned} g_{k}^{t} &=\mathbf{w}_{1}^{a} \mathrm{T} \tanh \left(\mathbf{W}_{2}^{a}\left[\mathbf{v}_{k}^{P}, \mathbf{h}_{t-1}^{a}\right]\right) \\ \alpha_{k}^{t} &=\exp \left(g_{k}^{t}\right) / \sum_{j=1}^{|\mathbf{P}|} \exp \left(g_{j}^{t}\right) \\ \mathbf{c}_{t} &=\sum_{k=1}^{|\mathbf{P}|} \alpha_{k}^{t} \mathbf{v}_{k}^{P} \\ \mathbf{h}_{t}^{a} &=\operatorname{LSTM}\left(\mathbf{h}_{t-1}^{a}, \mathbf{c}_{t}\right) \end{aligned}
+	\end{equation}
+	\item Answer Content Modeling
+	\begin{equation}
+		p_{k}^{c}=\operatorname{sigmoid}\left(\mathbf{w}_{1}^{c \top} \operatorname{ReLU}\left(\mathbf{W}_{2}^{c} \mathbf{v}_{k}^{P_{i}}\right)\right)
+		\end{equation}
+		\begin{equation}
+			\mathbf{r}^{A_{i}}=\frac{1}{\left|\mathbf{P}_{i}\right|} \sum_{k=1}^{\left|\mathbf{P}_{i}\right|} p_{k}^{c}\left[\mathbf{e}_{k}^{P_{i}}, \mathbf{c}_{k}^{P_{i}}\right]
+			\end{equation}
+	\item Cross-Passage Answer Verification
+	\begin{equation}
+	s_{i, j}=\left\{\begin{array}{ll}{0,} & {\text { if } i=j} \\ {\mathbf{r}^{A_{i} \top} \cdot \mathbf{r}^{A_{j}},} & {\text { otherwise }}\end{array}\right.
+	\end{equation}
+	\begin{equation}
+	\begin{aligned} \alpha_{i, j} &=\exp \left(s_{i, j}\right) / \sum_{k=1}^{n} \exp \left(s_{i, k}\right) \\ \tilde{\mathbf{r}}^{A_{i}} &=\sum_{j=1}^{n} \alpha_{i, j} \mathbf{r}^{A_{j}} \end{aligned}
+	\end{equation}
+
+	\begin{equation}
+		g_{i}^{v}=\mathbf{w}^{v \top}\left[\mathbf{r}^{A_{i}}, \tilde{\mathbf{r}}^{A_{i}}, \mathbf{r}^{A_{i}} \odot \tilde{\mathbf{r}}^{A_{i}}\right]
+		\end{equation}
+		\begin{equation}
+			p_{i}^{v}=\exp \left(g_{i}^{v}\right) / \sum_{j=1}^{n} \exp \left(g_{j}^{v}\right)
+			\end{equation}
+\end{enumerate}
+
 
 \newpage
 \section{Reinforced Mnemonic Reader for Machine Reading Comprehension}
-
-
+首先提出了一种reattention机制，能够访问临时存储的multi-round对齐的过去的attentions，来细化当前的注意力。
+另外提出了一种新的优化方式，叫做dynamic-critical reinforcement learning，它总是鼓励预测一个更可接受的答案，以解决传统的强化学习算法中存在的收敛抑制问题。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{14-1.png}
+\end{figure}
+\begin{enumerate}
+	\item Reattention Mechanism\\
+	\begin{equation}
+	\begin{array}{l}{\tilde{E}_{i j}^{t}=\operatorname{softmax}\left(E_{i :}^{t-1}\right) \cdot \operatorname{softmax}\left(B_{ : j}^{t-1}\right)} \\ {E_{i j}^{t}=f\left(v_{i}^{t}, u_{j}^{t}\right)+\gamma \tilde{E}_{i j}^{t}}\end{array}
+	\end{equation}
+	\begin{equation}
+	\begin{array}{l}{\tilde{B}_{i j}^{t}=\operatorname{softmax}\left(B_{i :}^{t-1}\right) \cdot \operatorname{softmax}\left(B_{ : j}^{t-1}\right)} \\ {B_{i j}^{t}=\mathbb{1}_{(i \neq j)}\left(f\left(h_{i}^{t}, h_{j}^{t}\right)+\gamma \tilde{B}_{i j}^{t}\right)}\end{array}
+	\end{equation}
+	\item Dynamic-critical Reinforcement Learning
+	\item End-to-end Architecture\\
+	\begin{equation}
+	\begin{array}{c}{\tilde{x}=\operatorname{relu}\left(W_{r}[x ; y ; x \circ y ; x-y]\right)} \\ {g=\sigma\left(W_{g}[x ; y ; x \circ y ; x-y]\right)} \\ {o=g \circ \tilde{x}+(1-g) \circ x}\end{array}
+	\end{equation}
+	\begin{equation}
+	\begin{array}{c}{R^{1}, Z^{1}, E^{1}, B^{1}=\operatorname{align}^{1}(U, V)} \\ {R^{2}, Z^{2}, E^{2}, B^{2}=\operatorname{align}^{2}\left(R^{1}, V, E^{1}, B^{1}\right)} \\ {R^{3}, Z^{3}, E^{3}, B^{3}=\operatorname{align}^{3}\left(R^{2}, V, E^{2}, B^{2}, Z^{1}, Z^{2}\right)}\end{array}
+	\end{equation}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\textwidth]{14-2.png}
+	\end{figure}
+\end{enumerate}
 \end{document}
