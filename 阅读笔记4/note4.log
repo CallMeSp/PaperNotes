@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.22)  24 JUN 2019 20:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.22)  25 JUN 2019 18:47
 entering extended mode
 **c:/Users/spwannasing/Documents/研一下学期/论文阅读笔记/阅读笔�
 �4/note4.tex
@@ -1519,9 +1519,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 94.
 ("C:\Users\spwannasing\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\ums
 b.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) 
-AED: lastpage setting LastPage
-
+)
 ("C:\Users\spwannasing\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ctex\zhwin
 dowsfonts.tex"
 File: zhwindowsfonts.tex 2019/05/29 v2.4.16 Windows font map loader for pdfTeX 
@@ -1529,33 +1527,64 @@ and DVIPDFMx (CTEX)
 ) [1
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 96.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 96.
+
+Package Fancyhdr Warning: \footskip is too small (10.0pt): 
+Make it at least 12.0pt.
+We now make it that large for the rest of the document.
+This may cause the page layout to be inconsistent, however.
+
+[2] [3] [4]
+Overfull \hbox (12.91907pt too wide) in paragraph at lines 106--106
+[]\OT1/cmr/bx/n/15.05624 S-NET: FROM AN-SWER EX-TRAC-TION TO AN-SWER
+ []
+
+
+Overfull \hbox (8.14435pt too wide) in paragraph at lines 106--106
+\OT1/cmr/bx/n/15.05624 GEN-ER-A-TION FOR MA-CHINE READ-ING COM-PRE-
+ []
+
+[5]
+Overfull \hbox (16.09242pt too wide) in paragraph at lines 109--109
+[]\OT1/cmr/bx/n/15.05624 QANET: COM-BIN-ING LO-CAL CON-VO-LU-TION WITH
+ []
+
+[6] [7] [8] [9] [10]
+Overfull \hbox (10.50058pt too wide) in paragraph at lines 124--124
+\OT1/cmr/bx/n/15.05624 CON-VER-SA-TIONAL MA-CHINE COM-PRE-HEN-SION 
+ []
+
+
+AED: lastpage setting LastPage
+[11]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 125.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 125.
  (note4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 96.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 96.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 125.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 125.
 Package rerunfilecheck Info: File `note4.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 96.
+(rerunfilecheck)             Checksum: E8B7A7DC9695D3151A9DB4558B16E534;4353.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 125.
  ) 
 Here is how much of TeX's memory you used:
- 29167 strings out of 492895
- 491773 string characters out of 3120933
- 669744 words of memory out of 3000000
- 32638 multiletter control sequences out of 15000+200000
- 543183 words of font info for 64 fonts, out of 3000000 for 9000
+ 29236 strings out of 492895
+ 492573 string characters out of 3120933
+ 669748 words of memory out of 3000000
+ 32676 multiletter control sequences out of 15000+200000
+ 545948 words of font info for 74 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,63p,1023b,350s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,11n,63p,1023b,351s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/s
 imsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS
 /Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:
-/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmr10.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr12.pfb><C:/Users/spwannasing/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on note4.pdf (1 page, 69997 bytes).
+/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun
+.ttc><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmbx12.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/spwannasing/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/spwannasi
+ng/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on note4.pdf (11 pages, 125226 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
- 2 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 169 PDF objects out of 1000 (max. 8388607)
+ 22 named destinations out of 1000 (max. 500000)
+ 125 words of extra memory for PDF output out of 10000 (max. 10000000)
 
