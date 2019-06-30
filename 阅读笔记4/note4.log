@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.22)  30 JUN 2019 16:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.22)  30 JUN 2019 16:48
 entering extended mode
 **c:/Users/spwannasing/Documents/ç ”ä¸€ä¸‹å­¦æœŸ/è®ºæ–‡é˜…è¯»ç¬”è®°/é˜…è¯»ç¬”è®
 °4/note4.tex
@@ -1586,41 +1586,51 @@ Overfull \hbox (8.14435pt too wide) in paragraph at lines 200--200
 <4-1.png, id=235, 733.23938pt x 746.79pt>
 File: 4-1.png Graphic file (type png)
 <use 4-1.png>
-Package pdftex.def Info: 4-1.png  used on input line 204.
-(pdftex.def)             Requested size: 303.53267pt x 309.14859pt.
+Package pdftex.def Info: 4-1.png  used on input line 205.
+(pdftex.def)             Requested size: 281.85034pt x 287.06493pt.
 <4-2.png, id=236, 749.04843pt x 511.15968pt>
 File: 4-2.png Graphic file (type png)
 <use 4-2.png>
-Package pdftex.def Info: 4-2.png  used on input line 208.
-(pdftex.def)             Requested size: 303.53267pt x 207.13553pt.
+Package pdftex.def Info: 4-2.png  used on input line 209.
+(pdftex.def)             Requested size: 281.85034pt x 192.33957pt.
+<4-3.png, id=237, 330.48468pt x 63.98906pt>
+File: 4-3.png Graphic file (type png)
+<use 4-3.png>
+Package pdftex.def Info: 4-3.png  used on input line 213.
+(pdftex.def)             Requested size: 260.17464pt x 50.37698pt.
 [7 <./4-1.png> <./4-2.png>]
-Overfull \hbox (16.09242pt too wide) in paragraph at lines 211--211
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
+
+ []
+
+[8 <./4-3.png>] [9]
+Overfull \hbox (16.09242pt too wide) in paragraph at lines 284--284
 []\OT1/cmr/bx/n/15.05624 QANET: COM-BIN-ING LO-CAL CON-VO-LU-TION WITH
  []
 
-<5-1.png, id=247, 916.92563pt x 721.19438pt>
+<5-1.png, id=275, 916.92563pt x 721.19438pt>
 File: 5-1.png Graphic file (type png)
 <use 5-1.png>
-Package pdftex.def Info: 5-1.png  used on input line 217.
+Package pdftex.def Info: 5-1.png  used on input line 290.
 (pdftex.def)             Requested size: 433.62pt x 341.06328pt.
-<5-2.png, id=248, 913.16156pt x 441.14813pt>
+<5-2.png, id=276, 913.16156pt x 441.14813pt>
 File: 5-2.png Graphic file (type png)
 <use 5-2.png>
-Package pdftex.def Info: 5-2.png  used on input line 221.
+Package pdftex.def Info: 5-2.png  used on input line 294.
 (pdftex.def)             Requested size: 303.53267pt x 146.63615pt.
-[8 <./5-1.png> <./5-2.png>]
-<6-1.png, id=261, 511.15968pt x 522.45187pt>
+[10 <./5-1.png> <./5-2.png>]
+<6-1.png, id=289, 511.15968pt x 522.45187pt>
 File: 6-1.png Graphic file (type png)
 <use 6-1.png>
-Package pdftex.def Info: 6-1.png  used on input line 229.
+Package pdftex.def Info: 6-1.png  used on input line 302.
 (pdftex.def)             Requested size: 260.17464pt x 265.92078pt.
-<6-2.png, id=262, 1162.3425pt x 518.6878pt>
+<6-2.png, id=290, 1162.3425pt x 518.6878pt>
 File: 6-2.png Graphic file (type png)
 <use 6-2.png>
-Package pdftex.def Info: 6-2.png  used on input line 233.
+Package pdftex.def Info: 6-2.png  used on input line 306.
 (pdftex.def)             Requested size: 433.62pt x 193.5023pt.
- [9 <./6-1.png> <./6-2.png>]
-Overfull \hbox (10.6291pt too wide) in paragraph at lines 258--260
+ [11 <./6-1.png> <./6-2.png>]
+Overfull \hbox (10.6291pt too wide) in paragraph at lines 331--333
 \C70/rm/m/n/10.53937/5c \OT1/cmr/m/n/10.53937 answer sen-tence|\C70/rm/m/n/10.
 53937/ff | \OT1/cmr/m/n/10.53937 question|\C70/rm/m/n/10.53937/ff | \OT1/cmr/
 m/n/10.53937 answer\C70/rm/m/n/10.53937/62 ü \C70/rm/m/n/10.53937/8d w \C70/rm/
@@ -1631,7 +1641,7 @@ OT1/cmr/m/n/10.53937 transformer |\C70/rm/m/n/10.53937/ff |\OT1/cmr/m/n/10.539
  []
 
 
-Overfull \hbox (0.17863pt too wide) in paragraph at lines 288--290
+Overfull \hbox (0.17863pt too wide) in paragraph at lines 361--363
 \C70/rm/m/n/10.53937/51 ú \C70/rm/m/n/10.53937/65 à \C70/rm/m/n/10.53937/7b T \
 C70/rm/m/n/10.53937/68 H \C70/rm/m/n/10.53937/69 ‚ \C70/rm/m/n/10.53937/73 ‡\OT
 1/cmr/m/n/10.53937 .\C70/rm/m/n/10.53937/8f Ù \C70/rm/m/n/10.53937/68 7 \C70/rm
@@ -1646,20 +1656,20 @@ m/m/n/10.53937/66 ô \C70/rm/m/n/10.53937/59 } \C70/rm/m/n/10.53937/76 „ \C70/rm
 /m/n/10.53937/60 ' \C70/rm/m/n/10.53937/80 ý|\C70/rm/m/n/10.53937/30 |
  []
 
-[10]
-<7-1.png, id=299, 459.21562pt x 469.00218pt>
+[12]
+<7-1.png, id=327, 459.21562pt x 469.00218pt>
 File: 7-1.png Graphic file (type png)
 <use 7-1.png>
-Package pdftex.def Info: 7-1.png  used on input line 299.
+Package pdftex.def Info: 7-1.png  used on input line 372.
 (pdftex.def)             Requested size: 260.17464pt x 265.73099pt.
- [11 <./7-1.png>]
-<8-1.png, id=308, 650.43pt x 404.26031pt>
+ [13 <./7-1.png>]
+<8-1.png, id=337, 650.43pt x 404.26031pt>
 File: 8-1.png Graphic file (type png)
 <use 8-1.png>
-Package pdftex.def Info: 8-1.png  used on input line 307.
+Package pdftex.def Info: 8-1.png  used on input line 380.
 (pdftex.def)             Requested size: 433.62pt x 269.51443pt.
 
-Overfull \hbox (4.93489pt too wide) in paragraph at lines 303--308
+Overfull \hbox (4.93489pt too wide) in paragraph at lines 376--381
 \C70/rm/m/n/10.53937/71 6 \C70/rm/m/n/10.53937/54  \C70/rm/m/n/10.53937/7b , \
 C70/rm/m/n/10.53937/4e Œ \C70/rm/m/n/10.53937/6b e \C70/rm/m/n/10.53937/57 ( \C
 70/rm/m/n/10.53937/8f Ù \C70/rm/m/n/10.53937/51 à \C70/rm/m/n/10.53937/7b Ç\OT1
@@ -1674,24 +1684,24 @@ cmr/m/n/10.53937 bigram\C70/rm/m/n/10.53937/65 c \C70/rm/m/n/10.53937/52  \C70
 /rm/m/n/10.53937/54 Œ\OT1/cmr/m/n/10.53937 tf-
  []
 
-[12 <./8-1.png>]
-<9-1.png, id=319, 709.14937pt x 382.42876pt>
+[14 <./8-1.png>]
+<9-1.png, id=348, 709.14937pt x 382.42876pt>
 File: 9-1.png Graphic file (type png)
 <use 9-1.png>
-Package pdftex.def Info: 9-1.png  used on input line 316.
+Package pdftex.def Info: 9-1.png  used on input line 389.
 (pdftex.def)             Requested size: 433.62pt x 233.84723pt.
- [13 <./9-1.png>]
-Overfull \hbox (10.50058pt too wide) in paragraph at lines 320--320
+ [15 <./9-1.png>]
+Overfull \hbox (10.50058pt too wide) in paragraph at lines 393--393
 \OT1/cmr/bx/n/15.05624 CON-VER-SA-TIONAL MA-CHINE COM-PRE-HEN-SION 
  []
 
-<10-1.png, id=330, 712.91344pt x 377.15906pt>
+<10-1.png, id=358, 712.91344pt x 377.15906pt>
 File: 10-1.png Graphic file (type png)
 <use 10-1.png>
-Package pdftex.def Info: 10-1.png  used on input line 326.
+Package pdftex.def Info: 10-1.png  used on input line 399.
 (pdftex.def)             Requested size: 433.62pt x 229.39911pt.
 
-Overfull \hbox (17.58214pt too wide) in paragraph at lines 321--327
+Overfull \hbox (17.58214pt too wide) in paragraph at lines 394--400
 \C70/rm/m/n/10.53937/4e  \C70/rm/m/n/10.53937/54 \OT1/cmr/m/n/10.53937 questi
 on\C70/rm/m/n/10.53937/5b ù \C70/rm/m/n/10.53937/5e ” \C70/rm/m/n/10.53937/76 „
 \OT1/cmr/m/n/10.53937 contex\C70/rm/m/n/10.53937/76 „ \C70/rm/m/n/10.53937/54 
@@ -1707,21 +1717,21 @@ C70/rm/m/n/10.53937/90  \C70/rm/m/n/10.53937/51 e\OT1/cmr/m/n/10.53937 lstm|\C
 
 
 AED: lastpage setting LastPage
-[14 <./10-1.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 361.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 361.
+[16 <./10-1.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 434.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 434.
  (note4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 361.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 361.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 434.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 434.
 Package rerunfilecheck Info: File `note4.out' has not changed.
 (rerunfilecheck)             Checksum: E8B7A7DC9695D3151A9DB4558B16E534;4353.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 361.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 434.
  ) 
 Here is how much of TeX's memory you used:
- 30468 strings out of 492895
- 510995 string characters out of 3120933
+ 30521 strings out of 492895
+ 511661 string characters out of 3120933
  680748 words of memory out of 3000000
- 33688 multiletter control sequences out of 15000+200000
+ 33720 multiletter control sequences out of 15000+200000
  570684 words of font info for 166 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,12n,63p,1023b,437s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1771,9 +1781,9 @@ Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/User
 s/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmsy7.pfb>
-Output written on note4.pdf (14 pages, 2006116 bytes).
+Output written on note4.pdf (16 pages, 2031766 bytes).
 PDF statistics:
- 635 PDF objects out of 1000 (max. 8388607)
- 82 named destinations out of 1000 (max. 500000)
- 443 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 666 PDF objects out of 1000 (max. 8388607)
+ 102 named destinations out of 1000 (max. 500000)
+ 448 words of extra memory for PDF output out of 10000 (max. 10000000)
 

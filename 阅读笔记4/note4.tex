@@ -198,15 +198,88 @@ OutPut:
 \end{figure}
 \newpage
 \section{S-NET: FROM ANSWER EXTRACTION TO ANSWER GENERATION FOR MACHINE READING COMPREHENSION}
-提出了一个extraction-then-synthesis的框架。
+提出了一个extraction-then-synthesis的框架。具体来说，答案提取模型首先用来预测文章中最重要的子区间作为证据，而答案综合模型则以证据作为附加的特征。并附上问题和段落，以进一步详细说明最后的答案。
+提出一项额外的passage-ranking任务（Multi-task learning的一次应用），以帮助在多个段落中提取答案。
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{4-1.png}
+	\includegraphics[width=0.65\textwidth]{4-1.png}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{4-2.png}
+	\includegraphics[width=0.65\textwidth]{4-2.png}
 \end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{4-3.png}
+	\caption{整体结构}
+\end{figure}
+
+EVIDENCE SNIPPET PREDICTION：\\
+\begin{equation}
+\begin{array}{l}{u_{t}^{Q}=\operatorname{BiGRU}_{Q}\left(u_{t-1}^{Q},\left[e_{t}^{Q}, c h a r_{t}^{Q}\right]\right)} \\ {u_{t}^{P}=\operatorname{BiGRU}_{P}\left(u_{t-1}^{P},\left[e_{t}^{P}, c h a r_{t}^{P}\right]\right)}\end{array}
+\end{equation}
+
+attention-pooling vector:
+\begin{equation}
+\begin{aligned} s_{j}^{t} &=\mathrm{v}^{\mathrm{T}} \tanh \left(W_{u}^{Q} u_{j}^{Q}+W_{u}^{P} u_{t}^{P}\right) \\ a_{i}^{t} &=\exp \left(s_{i}^{t}\right) / \Sigma_{j=1}^{m} \exp \left(s_{j}^{t}\right) \\ c_{t}^{Q} &=\Sigma_{i=1}^{m} a_{i}^{t} u_{i}^{Q} \end{aligned}
+\end{equation}
+
+sentence-pair representation:
+\begin{equation}
+	v_{t}^{P}=\operatorname{GRU}\left(v_{t-1}^{P}, c_{t}^{Q}\right)
+	\end{equation}
+
+match-LSTM:
+\begin{equation}
+\begin{array}{l}{g_{t}=\operatorname{sigmoid}\left(W_{g}\left[u_{t}^{P}, c_{t}^{Q}\right]\right)} \\ {\left[u_{t}^{P}, c_{t}^{Q}\right]^{*}=g_{t} \odot\left[u_{t}^{P}, c_{t}^{Q}\right]} \\ {v_{t}^{P}=\operatorname{GRU}\left(v_{t-1}^{P},\left[u_{t}^{P}, c_{t}^{Q}\right]^{*}\right)}\end{array}
+\end{equation}
+
+Answer prediction:
+\begin{equation}
+\begin{aligned} s_{j}^{t} &=\mathrm{v}^{\mathrm{T}} \tanh \left(W_{h}^{P} v_{j}^{P}+W_{h}^{a} h_{t-1}^{a}\right) \\ a_{i}^{t} &=\exp \left(s_{i}^{t}\right) / \Sigma_{j=1}^{N} \exp \left(s_{j}^{t}\right) \\ p^{t} &=\operatorname{argmax}\left(a_{1}^{t}, \ldots, a_{N}^{t}\right) \end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned} c_{t} &=\Sigma_{i=1}^{N} a_{i}^{t} v_{i}^{P} \\ h_{t}^{a} &=\operatorname{GRU}\left(h_{t-1}^{a}, c_{t}\right) \end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned} s_{j} &=\mathbf{v}^{\mathrm{T}} \tanh \left(W_{u}^{Q} u_{j}^{Q}+W_{v}^{Q} v_{r}^{Q}\right) \\ a_{i} &=\exp \left(s_{i}\right) / \Sigma_{j=1}^{m} \exp \left(s_{j}\right) \\ r^{Q} &=\sum_{i=1}^{m} a_{i} u_{i}^{Q} \end{aligned}
+\end{equation}
+\begin{equation}
+	\mathcal{L}_{A P}=-\Sigma_{t=1}^{2} \Sigma_{i=1}^{N}\left[y_{i}^{t} \log a_{i}^{t}+\left(1-y_{i}^{t}\right) \log \left(1-a_{i}^{t}\right)\right]
+	\end{equation}
+
+Passage ranking:
+\begin{equation}
+\begin{aligned} s_{j} &=\mathrm{v}^{\mathrm{T}} \tanh \left(W_{v}^{P} v_{j}^{P}+W_{v}^{Q} r^{Q}\right) \\ a_{i} &=\exp \left(s_{i}\right) / \Sigma_{j=1}^{n} \exp \left(s_{j}\right) \\ r^{P} &=\Sigma_{i=1}^{n} a_{i} v_{i}^{P} \end{aligned}
+\end{equation}
+\begin{equation}
+	g=v_{g}^{\mathrm{T}}\left(\tanh \left(W_{g}\left[r^{Q}, r^{P}\right]\right)\right)
+	\end{equation}
+	\begin{equation}
+	\begin{array}{c}{\hat{g}_{i}=\exp \left(g_{i}\right) / \Sigma_{j=1}^{k} \exp \left(g_{j}\right)} \\ {\mathcal{L}_{P R}=-\sum_{i=1}^{k}\left[y_{i} \log \hat{g}_{i}+\left(1-y_{i}\right) \log \left(1-\hat{g}_{i}\right)\right]}\end{array}
+	\end{equation}
+
+joint learning:
+\begin{equation}
+	\mathcal{L}_{E}=r \mathcal{L}_{A P}+(1-r) \mathcal{L}_{P R}
+	\end{equation}
+
+ANSWER SYNTHESIS:
+\begin{equation}
+\begin{array}{l}{h_{t}^{P}=\operatorname{BiGRU}\left(h_{t-1}^{P},\left[e_{t}^{p}, f_{t}^{s}, f_{t}^{e}\right]\right)} \\ {h_{t}^{Q}=\operatorname{BiGRU}\left(h_{t-1}^{Q}, e_{t}^{Q}\right)}\end{array}
+\end{equation}
+\begin{equation}
+\begin{aligned} s_{j}^{t} &=v_{a}^{\mathrm{T}} \tanh \left(W_{a} d_{t-1}+U_{a} h_{j}\right) \\ a_{i}^{t} &=\exp \left(s_{i}^{t}\right) / \Sigma_{j=1}^{n} \exp \left(s_{j}^{t}\right) \\ c_{t} &=\Sigma_{i=1}^{n} a_{i}^{t} h_{i} \end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned} d_{t} &=\mathrm{GRU}\left(w_{t-1}, c_{t-1}, d_{t-1}\right) \\ d_{0} &=\tanh \left(W_{d}\left[\overset{\leftarrow}{h}_{1}^{P}, \overset{\leftarrow}{h}_{1}^{Q}\right]+b\right) \end{aligned}
+\end{equation}
+\begin{equation}
+\begin{array}{c}{r_{t}=W_{r} w_{t-1}+U_{r} c_{t}+V_{r} d_{t}} \\ {m_{t}=\left[\max \left\{r_{t, 2 j-1}, r_{t, 2 j}\right\}\right]^{\mathrm{T}}} \\ {p\left(y_{t} | y_{1}, \ldots, y_{t-1}\right)=\operatorname{softmax}\left(W_{o} m_{t}\right)}\end{array}
+\end{equation}
+\begin{equation}
+	\mathcal{L}_{S}=-\frac{1}{|\mathcal{D}|} \Sigma_{(X, Y) \in \mathcal{D}} \log p(Y | X)
+	\end{equation}
 \newpage
 \section{QANET: COMBINING LOCAL CONVOLUTION WITH GLOBAL SELF-ATTENTION FOR READING COMPREHENSION}
 本文的创新：\\
