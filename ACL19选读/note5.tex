@@ -127,4 +127,58 @@ else：
 \begin{equation}
 	p\left(e_{j} | w_{i}\right)=\frac{\exp \left(\text { linear }\left(\boldsymbol{w}_{i}^{o}\right) \cdot \boldsymbol{e}_{j}\right)}{\sum_{k=1}^{m} \exp \left(\text { linear }\left(\boldsymbol{w}_{i}^{o}\right) \cdot \boldsymbol{e}_{k}\right)}
 	\end{equation}
+
+\newpage
+\section{ERNIE: Enhanced Representation through Knowledge Integration}
+ERNIE 通过建模海量数据中的词、实体及实体关系，学习真实世界的语义知识。相较于 BERT 学习原始语言信号，ERNIE 直接对先验语义知识单元进行建模，增强了模型语义表示能力。
+这里我们举个例子：\\
+
+Learnt by BERT ：哈 [mask] 滨是 [mask] 龙江的省会，[mask] 际冰 [mask] 文化名城。\\
+
+Learnt by ERNIE：[mask] [mask] [mask] 是黑龙江的省会，国际 [mask] [mask] 文化名城。\\
+
+在 BERT 模型中，我们通过『哈』与『滨』的局部共现，即可判断出『尔』字，模型没有学习与『哈尔滨』相关的任何知识。而 ERNIE 通过学习词与实体的表达，使模型能够建模出『哈尔滨』与『黑龙江』的关系，学到『哈尔滨』是 『黑龙江』的省会以及『哈尔滨』是个冰雪城市。
+
+训练数据方面，除百科类、资讯类中文语料外，ERNIE 还引入了论坛对话类数据，利用 DLM（Dialogue Language Model）建模 Query-Response 对话结构，将对话 Pair 对作为输入，引入 Dialogue Embedding 标识对话的角色，利用 Dialogue Response Loss 学习对话的隐式关系，进一步提升模型的语义表示能力。
+
+我们在自然语言推断，语义相似度，命名实体识别，情感分析，问答匹配 5 个公开的中文数据集合上进行了效果验证，ERNIE 模型相较 BERT 取得了更好的效果。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{2-1.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{2-2.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{2-3.png}
+\end{figure}
+
+
+\newpage
+\section{Learning to Ask Unanswerable Questions for Machine Reading Comprehension}
+提出一种数据增强技术，根据与包含答案的相应段落配对的可回答问题自动生成相关的无法回答的问题。所提出的结构为“pair-to-sequence”。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{3-1.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{3-2.png}
+\end{figure}
+
+\newpage
+\section{Course Concept Expansion in MOOCs with External Knowledge and Interactive Game}
+随着大规模在线开放课程(MOOC)的日益普及，为MOOC用户自动提供课外知识成为可能。语义漂移和知识缺乏在复杂的MOOC环境下，现有的方法不能有效地扩展课程概念。
+本文首先在通过外部知识库搜索新概念的过程中建立一个新的边界，然后利用异构特征来验证高质量的结果。具体算法没有特别仔细地看。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{4-1.png}
+\end{figure}
+
+\newpage
+\section{XLNet: Generalized Autoregressive Pretraining for Language Understanding}
+
+
 \end{document}
