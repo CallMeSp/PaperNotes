@@ -179,6 +179,60 @@ Learnt by ERNIE：[mask] [mask] [mask] 是黑龙江的省会，国际 [mask] [ma
 
 \newpage
 \section{XLNet: Generalized Autoregressive Pretraining for Language Understanding}
+本文提出了一个新的预训练模型，在20个任务上刷新了Bert的记录。其相对bert的主要改进是结合了AR(Transformer-XL)和AE的优点，抛弃了bert的Masked language model，使用了Permutation language model。
+对于每一种排列的序列，并不是改变原始的序列（即position embedding不变），只是改变mask（bert里的mask是直接mask一个word，这里的是在Transformer的计算过程中“mask”住不需要的部分）。
+e.g 在图二中，对于序列3241，1能“看见”324，所以都不用mask掉，而对于2，只能看见3，所以要mask掉14。
+
+虽然排列语言模型能满足目前的目标，但是对于普通的transformer结构来说是存在一定的问题的，为什么这么说呢，看个例子，假设我们要求这样的一个对数似然，$p_{\theta}\left(X_{z_{t}} | x_{z_{<t}}\right)$如果采用标准的softmax的话，那么
+
+$$
+p_{\theta}\left(X_{z_{t}} | x_{z_{<t}}\right)=\frac{\exp \left(e(x)^{T} h_{\theta}\left(x_{z_{z}}\right)\right)}{\sum_{x^{\prime}} \exp \left(e\left(x^{\prime}\right)^{T} h_{\theta}\left(x_{z_{<t}}\right)\right)}
+$$
+
+其中$h_{\theta}\left(x_{z_{<t}}\right)$表示的是添加了mask后的transformer的输出值，可以发现$h_{\theta}\left(x_{z_{<t}}\right)$并不依赖于其要预测的内容的位置信息，因为无论预测目标的位置在哪里，因式分解后得到的所有情况都是一样的，并且transformer的权重对于不同的情况是一样的，因此无论目标位置怎么变都能得到相同的分布结果，如下图所示，假如我们的序列index表示为[1,2,3]，对于目标2与3来说，其因式分解后的结果是一样的，那么经过transformer之后得到的结果肯定也是一样的。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{5-1.png}
+\end{figure}
+
+因此就提出了基于目标感知表征的双流自注意力。
+$$
+\begin{array}{l}{g_{z_{t}}^{(m)} \leftarrow \text { Attention }\left(\mathrm{Q}=g_{z_{t}}^{(m-1)}, \mathrm{KV}=\mathbf{h}_{\mathrm{z}<t}^{(m-1)} ; \theta\right)} \\ {h_{z_{t}}^{(m)} \leftarrow \text { Attention }\left(\mathrm{Q}=h_{z_{t}}^{(m-1)}, \mathrm{KV}=\mathrm{h}_{\mathrm{z} \leq t}^{(m-1)} ; \theta\right)}\end{array}
+$$
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{5-2.png}
+\end{figure}
+
+reference：\\
+https://zhuanlan.zhihu.com/p/70257427 \\
+https://blog.csdn.net/u012526436/article/details/93196139
 
 
+\newpage
+\section{Star-Transformer}
+本文提出了一种对于Transformer改进的结构“star-Transformer”。将标准Transformer中全连接的部分调整为星型的拓扑结构，在实际任务中速度提升了4.5倍。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{6-1.png}
+\end{figure}
+
+添加了一个虚拟的节点作为relay node。由此可以分为两种连接，Radical Connections和Ring Connections。环连接可以有效地减少局部和非局部成分的非偏置学习负担，提高模型的泛化能力。
+将标准的Transformer复杂度 $O(n^2)$降低为$O(n)$。
+
+根式连接集中在非局部构图上，环连接集中在局部构图上。因此，star-Transformer适用于尺寸适中的数据集，不依赖于繁重的预培训。
+
+令$\mathbf{s}^{t} \in \mathbb{R}^{1 \times d}$ and $\mathbf{H}^{t} \in \mathbb{R}^{n \times d}$ 分别为relay node和所有的satellite node。
+
+初始化$\mathbf{H}^{0}=\mathbf{E}$ 和 $s^0 = \text{average}(\mathbf{E})$
+
+$$
+\begin{array}{l}{\mathbf{C}_{i}^{t}=\left[\mathbf{h}_{i-1}^{t-1} ; \mathbf{h}_{i}^{t-1} ; \mathbf{h}_{i+1}^{t-1} ; \mathbf{e}^{i} ; \mathbf{s}^{t-1}\right]} \\ {\mathbf{h}_{i}^{t}=\text { MultiAtt }\left(\mathbf{h}_{i}^{t-1}, \mathbf{C}_{i}^{t}\right)}\end{array}
+$$
+$$
+\mathbf{h}_{i}^{t}=\text { LayerNorm }\left(\operatorname{ReLU}\left(\mathbf{h}_{i}^{t}\right)\right), i \in[1, n]
+$$
+$$
+\begin{array}{l}{\mathbf{s}^{t}=\text { MultiAt }\left(\mathbf{s}^{t-1},\left[\mathbf{s}^{t-1} ; \mathbf{H}^{t}\right]\right)} \\ {\mathbf{s}^{t}=\text { LayerNorm (ReL } \mathrm{U}\left(\mathbf{s}^{t}\right) )}\end{array}
+$$
 \end{document}

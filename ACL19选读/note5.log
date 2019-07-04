@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.22)  3 JUL 2019 20:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.22)  4 JUL 2019 16:27
 entering extended mode
 **c:/Users/spwannasing/Documents/ç ”ä¸€ä¸‹å­¦æœŸ/è®ºæ–‡é˜…è¯»ç¬”è®°/ACL19é€‰è¯»
 /note5.tex
@@ -1529,12 +1529,12 @@ and DVIPDFMx (CTEX)
 ]
 Package CJKpunct Info: use punctuation spaces for family 'rm' with punctstyle (
 quanjiao) on input line 97.
-<1-1.png, id=70, 807.7678pt x 355.3275pt>
+<1-1.png, id=74, 807.7678pt x 355.3275pt>
 File: 1-1.png Graphic file (type png)
 <use 1-1.png>
 Package pdftex.def Info: 1-1.png  used on input line 100.
 (pdftex.def)             Requested size: 433.62pt x 190.74623pt.
-<1-2.png, id=72, 658.71094pt x 200.24812pt>
+<1-2.png, id=76, 658.71094pt x 200.24812pt>
 File: 1-2.png Graphic file (type png)
 <use 1-2.png>
 Package pdftex.def Info: 1-2.png  used on input line 105.
@@ -1561,34 +1561,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 138--139
 
  []
 
-<2-1.png, id=153, 494.59781pt x 286.82156pt>
+<2-1.png, id=157, 494.59781pt x 286.82156pt>
 File: 2-1.png Graphic file (type png)
 <use 2-1.png>
 Package pdftex.def Info: 2-1.png  used on input line 147.
 (pdftex.def)             Requested size: 433.62pt x 251.4584pt.
-<2-2.png, id=154, 725.71124pt x 130.23656pt>
+<2-2.png, id=158, 725.71124pt x 130.23656pt>
 File: 2-2.png Graphic file (type png)
 <use 2-2.png>
 Package pdftex.def Info: 2-2.png  used on input line 151.
 (pdftex.def)             Requested size: 433.62pt x 77.8186pt.
-<2-3.png, id=155, 584.1825pt x 233.37187pt>
+<2-3.png, id=159, 584.1825pt x 233.37187pt>
 File: 2-3.png Graphic file (type png)
 <use 2-3.png>
 Package pdftex.def Info: 2-3.png  used on input line 155.
 (pdftex.def)             Requested size: 433.62pt x 173.23018pt.
 [4 <./2-1.png>] [5 <./2-2.png> <./2-3.png>]
-<3-1.png, id=197, 692.5875pt x 607.51968pt>
+<3-1.png, id=201, 692.5875pt x 607.51968pt>
 File: 3-1.png Graphic file (type png)
 <use 3-1.png>
 Package pdftex.def Info: 3-1.png  used on input line 164.
 (pdftex.def)             Requested size: 260.17464pt x 228.21793pt.
-<3-2.png, id=198, 380.92313pt x 392.96812pt>
+<3-2.png, id=202, 380.92313pt x 392.96812pt>
 File: 3-2.png Graphic file (type png)
 <use 3-2.png>
 Package pdftex.def Info: 3-2.png  used on input line 168.
 (pdftex.def)             Requested size: 260.17464pt x 268.40802pt.
  [6 <./3-1.png> <./3-2.png>]
-<4-1.png, id=217, 1015.54407pt x 431.36156pt>
+<4-1.png, id=221, 1015.54407pt x 431.36156pt>
 File: 4-1.png Graphic file (type png)
 <use 4-1.png>
 Package pdftex.def Info: 4-1.png  used on input line 177.
@@ -1601,23 +1601,66 @@ for Lan-
  []
 
 
+Overfull \hbox (51.68895pt too wide) in paragraph at lines 182--185
+\C70/rm/m/n/10.53937/8f Û \C70/rm/m/n/10.53937/66 / \C70/rm/m/n/10.53937/7e Ó \
+C70/rm/m/n/10.53937/54  \C70/rm/m/n/10.53937/4e †\OT1/cmr/m/n/10.53937 AR(Tran
+sformer-XL)\C70/rm/m/n/10.53937/54 Œ\OT1/cmr/m/n/10.53937 AE\C70/rm/m/n/10.5393
+7/76 „ \C70/rm/m/n/10.53937/4f  \C70/rm/m/n/10.53937/70 ¹|\C70/rm/m/n/10.53937
+/ff | \C70/rm/m/n/10.53937/62 › \C70/rm/m/n/10.53937/5f  \C70/rm/m/n/10.53937
+/4e †\OT1/cmr/m/n/10.53937 bert\C70/rm/m/n/10.53937/76 „\OT1/cmr/m/n/10.53937 M
+asked lan-guage model|\C70/rm/m/n/10.53937/ff | \C70/rm/m/n/10.53937/4f  \C70
+/rm/m/n/10.53937/75 ( \C70/rm/m/n/10.53937/4e †\OT1/cmr/m/n/10.53937 Permutatio
+n
+ []
+
+<5-1.png, id=239, 995.97093pt x 732.48656pt>
+File: 5-1.png Graphic file (type png)
+<use 5-1.png>
+Package pdftex.def Info: 5-1.png  used on input line 195.
+(pdftex.def)             Requested size: 433.62pt x 318.9085pt.
+[8 <./5-1.png>]
+<5-2.png, id=251, 935.74594pt x 465.99094pt>
+File: 5-2.png Graphic file (type png)
+<use 5-2.png>
+Package pdftex.def Info: 5-2.png  used on input line 204.
+(pdftex.def)             Requested size: 433.62pt x 215.93694pt.
+ [9 <./5-2.png>]
+<6-1.png, id=259, 710.655pt x 553.31718pt>
+File: 6-1.png Graphic file (type png)
+<use 6-1.png>
+Package pdftex.def Info: 6-1.png  used on input line 217.
+(pdftex.def)             Requested size: 260.17464pt x 202.57964pt.
+
+Overfull \hbox (10.52663pt too wide) in paragraph at lines 220--222
+[]\C70/rm/m/n/10.53937/6d û \C70/rm/m/n/10.53937/52   \C70/rm/m/n/10.53937/4e †
+   * \C70/rm/m/n/10.53937/86 Z \C70/rm/m/n/10.53937/62 ß \C70/rm/m/n/10.53937/7
+6 „ \C70/rm/m/n/10.53937/82 ‚ \C70/rm/m/n/10.53937/70 ¹ \C70/rm/m/n/10.53937/4f
+ \ \C70/rm/m/n/10.53937/4e :\OT1/cmr/m/n/10.53937 relay node|\C70/rm/m/n/10.539
+37/30 | \C70/rm/m/n/10.53937/75 1 \C70/rm/m/n/10.53937/6b d \C70/rm/m/n/10.539
+37/53 ï \C70/rm/m/n/10.53937/4e å \C70/rm/m/n/10.53937/52  \C70/rm/m/n/10.5393
+7/4e : $ \C70/rm/m/n/10.53937/79 Í \C70/rm/m/n/10.53937/8f Þ \C70/rm/m/n/10.539
+37/63 ¥|\C70/rm/m/n/10.53937/ff | \OT1/cmr/m/n/10.53937 Radical Con-nec-tions\
+C70/rm/m/n/10.53937/54 Œ\OT1/cmr/m/n/10.53937 Ring
+ []
+
+
 AED: lastpage setting LastPage
-[8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 184.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 184.
+[10 <./6-1.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 238.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 238.
  (note5.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 184.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 184.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 238.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 238.
 Package rerunfilecheck Info: File `note5.out' has not changed.
-(rerunfilecheck)             Checksum: 5201F479BBE317AED4E9C1396E6AD0C2;2052.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 184.
+(rerunfilecheck)             Checksum: A833AB2480237466FD081FD41D4A5F73;2176.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 238.
  ) 
 Here is how much of TeX's memory you used:
- 30226 strings out of 492895
- 508023 string characters out of 3120933
- 676744 words of memory out of 3000000
- 33519 multiletter control sequences out of 15000+200000
- 569604 words of font info for 162 fonts, out of 3000000 for 9000
+ 30472 strings out of 492895
+ 511081 string characters out of 3120933
+ 678748 words of memory out of 3000000
+ 33750 multiletter control sequences out of 15000+200000
+ 570414 words of font info for 165 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,12n,63p,1021b,376s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/s
@@ -1645,23 +1688,30 @@ WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.
 ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts
 /simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDO
 WS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><
-C:/WINDOWS/Fonts/simsun.ttc><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/spwannasing/AppData/Lo
-cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/spw
-annasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi1
-0.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmmi7.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/spwannasing/AppData/Local
-/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/spwanna
-sing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb
-><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmr17.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/spwannasing/AppData/Local/Program
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/spwannasing/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on note5.pdf (8 pages, 1100091 bytes).
+C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/sims
+un.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/Users/spwannasing/AppData/Local/Program
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/spwannasing/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/U
+sers/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmex10.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmmi10.pfb><C:/Users/spwannasing/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/spwannasing/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/
+spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+mib10.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr10.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/spwannasing/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/spwan
+nasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pf
+b><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb><C:/Users/spwannasing/AppData/Local/Programs/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/spwannasing/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/spwannasing/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pf
+b>
+Output written on note5.pdf (10 pages, 1491902 bytes).
 PDF statistics:
- 486 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 500000)
- 357 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 539 PDF objects out of 1000 (max. 8388607)
+ 33 named destinations out of 1000 (max. 500000)
+ 392 words of extra memory for PDF output out of 10000 (max. 10000000)
 
