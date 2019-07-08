@@ -235,4 +235,140 @@ $$
 $$
 \begin{array}{l}{\mathbf{s}^{t}=\text { MultiAt }\left(\mathbf{s}^{t-1},\left[\mathbf{s}^{t-1} ; \mathbf{H}^{t}\right]\right)} \\ {\mathbf{s}^{t}=\text { LayerNorm (ReL } \mathrm{U}\left(\mathbf{s}^{t}\right) )}\end{array}
 $$
+
+\newpage
+\section{Retrieve, Read, Rerank: Towards End-to-End Multi-Document Reading Comprehension}
+这篇文章是基于Multi-Document阅读理解的，主要改进是将原始的retriever-reader-reranker的管道式结构，改为一个统一的end2end的模型。
+因为管道式方法，相互割裂，上游一些优秀的representation无法有效的传递到下游，因为下游会对其重新encoding。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{7-1.png}
+\end{figure}
+\begin{enumerate}
+	\item Document Pruning:利用TF-IDF余弦距离。
+	\item Segment Encoding\begin{equation}
+		\mathbf{h}^{i}=\text { Transformer Block }\left(\mathbf{h}^{i-1}\right), \forall i \in[1, I]
+		\end{equation}
+	\item Early-Stopped Retriever
+	\begin{equation}
+	\begin{array}{c}{\mu=\operatorname{softmax}\left(\mathbf{w}_{\mu} \mathbf{h}^{J}\right)} \\ {\text { score }^{r}=\mathbf{w}_{r} \tanh \left(\mathbf{W}_{r} \sum_{i=1}^{L_{x}} \mu_{i} \mathbf{h}_{i}^{J}\right)}\end{array}
+	\end{equation}
+	\begin{equation}
+		\mathcal{L}_{I}=-\sum_{i=1}^{2} \mathbf{y}_{i}^{r} \log \left(\operatorname{softmax}\left(\mathbf{s c o r e}^{r}\right)_{i}\right)
+		\end{equation}
+	\item Distantly-Supervised Reader
+	\begin{equation}
+		\mathbf{s c o r e}^{s}=\mathbf{w}_{s} \mathbf{h}^{I}, \mathbf{s c o r e}^{e}=\mathbf{w}_{e} \mathbf{h}^{I}
+		\end{equation}
+		\begin{equation}
+		\begin{aligned} \mathcal{L}_{I I}=&-\sum_{i=1}^{L_{x}} \mathbf{y}_{i}^{s} \log \left(\operatorname{softmax}\left(\mathbf{score}^{s}\right)_{i}\right) \\ &-\sum_{j=1}^{L_{x}} \mathbf{y}_{j}^{e} \log \left(\operatorname{softmax}\left(\mathbf{s c o r e}^{e}\right)_{j}\right) \end{aligned}
+		\end{equation}
+	\item Answer Reranker
+	\begin{equation}
+	\begin{array}{c}{\eta=\operatorname{softmax}\left(\mathbf{w}_{\eta} \mathbf{h}_{\alpha_{i} ; \beta_{i}}^{I}\right)} \\ {\text { score }_{i}^{a}=\mathbf{w}_{a} \tanh \left(\mathbf{W}_{a} \sum_{j=\alpha_{i}}^{\beta_{i}} \eta_{j-\alpha_{i}+1} \mathbf{h}_{j}^{I}\right)}\end{array}
+	\end{equation}
+	\begin{equation}
+		\mathcal{L}_{I I I}=-\sum_{i=1}^{M^{*}} \mathbf{y}_{i}^{\text {hard}} \log (\text { softmax (score })_{i} )+\sum_{i=1}^{M^{*}}\left\|\mathbf{y}_{i}^{s o f t}-\frac{\text { score }_{i}^{a}}{\sum_{j=1}^{M^{*}} \operatorname{score}_{j}^{a}}\right\|^{2}
+		\end{equation}
+	\item Training and Inference
+	\begin{equation}
+		\mathcal{J}=\mathcal{L}_{I}+\mathcal{L}_{I I}+\mathcal{L}_{I I I}
+		\end{equation}
+\end{enumerate}
+
+\newpage
+\section{Explicit Utilization of General Knowledge in Machine Reading Comprehension}
+提出了一个叫做Knowledge Aided Reader (KAR)的模型，本质是在Attention上做文章。利用了外部数据：利用WordNet来作为data enrichment的方法。
+显式的利用了人类的通用知识，即：不同词之间的多义词、次词、全音词、合音词、属性等。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{8-1.png}
+\end{figure}
+
+创新点有二：
+\begin{enumerate}
+	\item Knowledge Aided Mutual Attention:\\
+	传统的计算passage和questions的相似度：
+	\begin{equation}
+		f\left(c_{p_{i}}, c_{q_{j}}\right)=v_{f}^{\top}\left[c_{p_{i}} ; c_{q_{j}} ; c_{p_{i}} \odot c_{q_{j}}\right] \in \mathbb{R}
+		\end{equation}
+	本文提出的：\\
+	对于每一个单词w，首先去构建它的enhanced context embedding：$c_w^*$。对于一个单词，根据Wordnet得到一个集合$E_w$，从而得到$Z \in \mathbb{R}^{d \times\left|E_{w}\right|}$。
+	\begin{equation}
+	\begin{array}{c}{t_{i}=v_{c}^{\top} \tanh \left(W_{c} z_{i}+U_{c} c_{w}\right) \in \mathbb{R}} \\ {c_{w}^{+}=Z \operatorname{softmax}\left(\left\{t_{1}, \ldots, t_{\left|E_{w}\right|}\right\}\right) \in \mathbb{R}^{d}}\end{array}
+	\end{equation}
+	然后将$c_w$和$C_w^+$ 连接起来送入有着ReLU激活的dense layer，输出为d-dimension，得到$c_{w}^{*} \in \mathbb{R}^{d}$。
+	\begin{equation}
+		f^{*}\left(c_{p_{i}}, c_{q_{j}}\right)=v_{f}^{\top}\left[c_{p_{i}}^{*} ;_{q_{j}}^{*} ; c_{p_{i}}^{*} \odot c_{q_{j}}^{*}\right] \in \mathbb{R}
+		\end{equation}
+		\begin{equation}
+			A_{i, j}=f^{*}\left(c_{p_{i}}, c_{q_{j}}\right)
+			\end{equation}
+			\begin{equation}
+			\begin{array}{c}{R_{Q}=C_{Q} \operatorname{softmax}_{r}^{\top}(A) \in \mathbb{R}^{d \times n}} \\ {R_{P}=C_{P} \operatorname{softmax}_{c}(A) \operatorname{softmax}_{r}^{\top}(A) \in \mathbb{R}^{d \times n}}\end{array}
+			\end{equation}
+	\item Knowledge Aided Self Attention:\\
+	总体上思想类似：
+	\begin{equation}
+	\begin{array}{c}{t_{i}=v_{g}^{\top} \tanh \left(W_{g} z_{i}+U_{g} g_{p_{i}}\right) \in \mathbb{R}} \\ {g_{p_{i}}^{+}=Z \operatorname{softmax}\left(\left\{t_{1}, \ldots, t_{\left|E_{p_{i}}\right|}\right\}\right) \in \mathbb{R}^{d}}\end{array}
+	\end{equation}
+\end{enumerate}
+
+\newpage
+\section{Multi-Style Generative Reading Comprehension}
+目前，本文是MARCO数据集NLG任务的第一名，文章突破了抽取式阅读理解模型的束缚，采用摘要的方式生成指定风格的答案，这两个突破算是GMRC的一个里程碑。
+本文针对的是MARCO数据集，简单介绍一下该数据集的特点。用一句话来概括就是——开放域、多文档、生成式的大规模阅读理解数据集，问题和答案都来自于真实数据，所有问题的答案都是人类生成的，有一定的答案还需要额外的人工评估，也就是well-formed的答案。
+
+作者发现之前在MARCO上刷榜的模型大都是抽取式的模型，但是先抽取再生成的pipeline框架是有点弱了。并且现有模型不能根据给定的风格生成相应的答案。
+论文发现，通常Q\&A任务的答案比较简短，NLG任务的答案比较详细。本文想从这两个点入手，提出了两个很新奇的点子：
+
+1. 把生成式阅读理解当作摘要问题来做，生成问题、段落的摘要作为最终的答案。
+
+2. 给定模型风格，训练模型使得其有能力生成相应风格的答案。
+
+提出了一个端到端的模型——masque【风格可控的多源头摘要式模型】，模型根据给定的风格生成答案序列，生成词的来源可以是问题、段落和词表。
+一共分为四个部分：
+
+1. The question-passages reader: 建模问题与段落之间的关系；
+
+2. The passage ranker: 找寻与问题相关的段落；
+
+3. The answer possibility classfier: 识别出可回答的问题；
+
+4. The answer sentence decoder: 根据给定的风格生成词序列。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.65\textwidth]{9-3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.65\textwidth]{9-2.png}
+\end{figure}
+\begin{equation}
+	P^{v}\left(y_{t}\right)=\operatorname{softmax}\left(W^{2^{\top}}\left(W^{1} s_{t}+b^{1}\right)\right)
+	\end{equation}
+	\begin{equation}
+		P^{q}\left(y_{t}\right)=\sum_{j : x_{j}^{q}=y_{t}} \alpha_{t j}^{q}
+		\end{equation}
+		\begin{equation}
+			P^{p}\left(y_{t}\right)=\sum_{l : x_{l}^{p_{k(l)}}=y_{t}}\alpha_{tl}^{p}
+			\end{equation}
+			\begin{equation}
+			\begin{aligned} P\left(y_{t}\right) &=\lambda^{v} P^{v}\left(y_{t}\right)+\lambda^{q} P^{q}\left(y_{t}\right)+\lambda^{p} P^{p}\left(y_{t}\right) \\ \lambda^{v}, \lambda^{q}, \lambda^{p} &=\operatorname{softmax}\left(W^{m}\left[s_{t} ; c_{t}^{q} ; c_{t}^{p}\right]+b^{m}\right) \end{aligned}
+			\end{equation}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{9-1.png}
+\end{figure}
+
+\newpage
+\section{How Much Reading Does Reading Comprehension Require? A Critical Investigation of Popular Benchmarks}
+EMNLP2018最佳短论文。
+
+最近在阅读理解问题上有很多研究，它们一般都包含 (question, passage, answer) 元组。大概而言，阅读理解模型必须结合来自问题和文章的信息以预测对应的回答。然而，尽管这一主题非常受关注，且有数百篇论文都希望更好地解决该问题，但许多流行基准的测试难度问题仍未得到解决。在本论文中，我们为 bAbI、SQuAD、CBT、CNN 和 Whodid-What 数据集建立了合理的基线模型，并发现仅带有问题或文章的模型通常有更好的表现。在 20 个 bAbI 任务的 14 个中，仅带有文章的模型实现了高达 50
+\% 的准确度，它有时能与全模型的性能相匹配。有趣的是，虽然 CBT 提供了 20-sentence 的故事，但只有最后一句能进行相对准确的预测。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{10-1.png}
+\end{figure}
 \end{document}
