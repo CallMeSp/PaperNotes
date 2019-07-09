@@ -14,7 +14,7 @@ __pycache__/
 *.aux
 *.log
 *.out
-*.g
+*.gz
 # Distribution / packaging
 .Python
 build/
