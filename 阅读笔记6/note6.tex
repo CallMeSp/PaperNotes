@@ -190,4 +190,81 @@ System 2(GNN)： \\
 						z=z_{c t x}+z_{p s g}
 						\end{equation}
 \end{enumerate}
+
+\newpage
+\section{Relational inductive biases, deep learning, and graph networks}
+主要介绍了一些GNN的相关应用方法，是Section 1 的论文中System 2的组成部分。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{3-1.png}
+	\caption{GNN的定义}
+\end{figure}
+
+GNN中节点更新方式：
+\begin{equation}
+\begin{array}{ll}{\mathbf{e}_{k}^{\prime}=\phi^{e}\left(\mathbf{e}_{k}, \mathbf{v}_{r_{k}}, \mathbf{v}_{s k}, \mathbf{u}\right)} & {\overline{\mathbf{e}}_{i}^{\prime}=\rho^{e \rightarrow v}\left(E_{i}^{\prime}\right)} \\ {\mathbf{v}_{i}^{\prime}=\phi^{v}\left(\overline{\mathbf{e}}_{i}^{\prime}, \mathbf{v}_{i}, \mathbf{u}\right)} & {\overline{\mathbf{e}}^{\prime}=\rho^{e \rightarrow u}\left(E^{\prime}\right)} \\ {\mathbf{u}^{\prime}=\phi^{u}\left(\overline{\mathbf{e}}^{\prime}, \overline{\mathbf{v}}^{\prime}, \mathbf{u}\right)} & {\overline{\mathbf{v}}^{\prime}=\rho^{v \rightarrow u}\left(V^{\prime}\right)}\end{array}
+\end{equation}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{3-2.png}
+\end{figure}
+
+\newpage
+\section{BAM! Born-Again Multi-Task Networks for Natural Language Understanding}
+多任务模型的性能通常比它们的单任务对应对象差,本文就提出了了一种通用的解决方案。通过Knowledge Distillation，Multi-Task Distillation和Teacher Anneall来解决这个问题。
+主要思想是对于每一个Task，由Teacher(Teacher的结构和student一样)来“教导”它们该如何去做，在训练一定时间之后，“student”再去向golden answer学习。理由是teacher提供的answer的预测是一个分布，比golden answer的one-hot能够提供更多的信息。
+比如在图像分类的时候，该图片为马，one-hot只会标注这是一只马，而Teacher预测的distribution不仅能知道是马，
+还能够知道，相比于自行车飞机什么的，更有可能是一只驴。\\
+1.Kownledge Distillation:\\
+
+传统的one-hot：$\mathcal{L}(\theta)=\sum_{x_{\tau}^{i}, y_{\tau}^{i} \in \mathcal{D}_{\tau}} \ell\left(y_{\tau}^{i}, f_{\tau}\left(x_{\tau}^{i}, \theta\right)\right)$\\
+
+Distillation:$\mathcal{L}(\theta)=\sum_{x_{\tau}^{i}, y_{\tau}^{i} \in \mathcal{D}_{\tau}} \ell\left(f_{\tau}\left(x_{\tau}^{i}, \theta^{\prime}\right), f_{\tau}\left(x_{\tau}^{i}, \theta\right)\right)$\\
+2.Multi-Task Distillation:\\$$
+\mathcal{L}(\theta)=\sum_{\tau \in \mathcal{T}} \sum_{x_{\tau}^{i}, y_{\tau}^{i} \in \mathcal{D}_{\tau}} \ell\left(f_{\tau}\left(x_{\tau}^{i}, \theta_{\tau}\right), f_{\tau}\left(x_{\tau}^{i}, \theta\right)\right)
+$$
+3.Teacher Annealing:
+$$
+\ell\left(\lambda y_{\tau}^{i}+(1-\lambda) f_{\tau}\left(x_{\tau}^{i}, \theta_{\tau}\right), f_{\tau}\left(x_{\tau}^{i}, \theta\right)\right)
+$$
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{4-1.png}
+\end{figure}
+
+\newpage
+\section{Graph Neural Networks with Generated Parameters for Relation Extraction}
+本文是刘知远老师组里的工作，是GNN在推理和关系抽取上的一次应用：Graph Neural Network with Generated Parameter（GP-GNNs）。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{5-1.png}
+\end{figure}
+结构分为三部分：
+\begin{enumerate}
+	\item Encoding Module:\\
+	\begin{equation}
+		s=\left(x_{0}, x_{1}, \ldots, x_{l-1}\right)
+		\end{equation}
+		\begin{equation}
+			E\left(x_{t}^{i, j}\right)=\left[\boldsymbol{x}_{t} ; \boldsymbol{p}_{t}^{i, j}\right]
+			\end{equation}
+			\begin{equation}
+				\mathcal{A}_{i, j}^{(n)}=f\left(E\left(x_{0}^{i, j}\right), E\left(x_{1}^{i, j}\right), \cdots, E\left(x_{l-1}^{i, j}\right) ; \theta_{e}^{n}\right)
+				\end{equation}
+	i,j分别是对应的entity的索引，$x_t$是一个sequence中t位置的word。$p_t$是相对位置向量，即表示该单词是否在实体i，实体j中还是都不在。
+	\item Propagation Module:\\
+	\begin{equation}
+		\mathbf{h}_{i}^{(n+1)}=\sum_{v_{j} \in \mathcal{N}\left(v_{i}\right)} \sigma\left(\mathcal{A}_{i, j}^{(n)} \mathbf{h}_{j}^{(n)}\right)
+		\end{equation}
+	\item Classification Module:\\
+	\begin{equation}
+		\mathcal{L}=g\left(\mathbf{h}_{0 :|\nu|-1}^{0}, \mathbf{h}_{0 :|\nu|-1}^{1}, \ldots, \mathbf{h}_{0 :|\mathcal{V}|-1}^{K}, Y ; \theta_{c}\right)
+		\end{equation}
+		\begin{equation}
+			\boldsymbol{r}_{v_{i}, v_{j}}=\left[\left[\boldsymbol{h}_{v_{i}}^{(1)} \odot \boldsymbol{h}_{v_{j}}^{(1)}\right]^{\top} ;\left[\boldsymbol{h}_{v_{i}}^{(2)} \odot \boldsymbol{h}_{v_{j}}^{(2)}\right]^{\top} ; \ldots ;\left[\boldsymbol{h}_{v_{i}}^{(K)} \odot \boldsymbol{h}_{v_{j}}^{(K)}\right]^{\top}\right]
+			\end{equation}
+			\begin{equation}
+				\mathcal{L}=\sum_{s \in S} \sum_{i \neq j} \log \mathbb{P}\left(r_{v_{i}, v_{j}} | i, j, s\right)
+				\end{equation}
+\end{enumerate}
 \end{document}
