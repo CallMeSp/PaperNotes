@@ -267,4 +267,77 @@ $$
 				\mathcal{L}=\sum_{s \in S} \sum_{i \neq j} \log \mathbb{P}\left(r_{v_{i}, v_{j}} | i, j, s\right)
 				\end{equation}
 \end{enumerate}
+
+\newpage
+\section{Multi-hop Reading Comprehension across Multiple Documents by Reasoning over Heterogeneous Graphs}
+本文所解决的问题是跨文档的多跳阅读理解，提出的模型是Heterogeneous Document-Entity Graph（HDEGraph）。
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{6-1.png}
+\end{figure}
+\begin{enumerate}
+	\item Context Encoding\\以support document的encoding距离，candidates和query的情况类似。
+	\begin{equation}
+		\mathbf{A}_{q s}^{i}=\mathbf{H}_{s}^{i}\left(\mathbf{H}_{q}\right)^{\top} \in \mathbb{R}^{l_{s}^{i} \times l_{q}}
+		\end{equation}
+		\begin{equation}
+		\begin{aligned} \mathbf{C}_{q} &=\operatorname{softmax}\left(\mathbf{A}_{q s}^{\top}\right) \mathbf{H}_{s} \in \mathbb{R}^{l_{q} \times h} \\ \mathbf{C}_{s} &=\operatorname{softmax}\left(\mathbf{A}_{q s}\right) \mathbf{H}_{q} \in \mathbb{R}^{l_{s} \times h} \end{aligned}
+		\end{equation}
+		\begin{equation}
+			\mathbf{D}_{s}=f\left(\operatorname{softmax}\left(\mathbf{A}_{q s}\right) C_{q}\right) \in \mathbb{R}^{l_{s} \times h}
+			\end{equation}
+			\begin{equation}
+				\mathbf{S}_{c a}=\left[\mathbf{C}_{s} ; \mathbf{D}_{s}\right] \in \mathbb{R}^{l_{s} \times 2 h}
+				\end{equation}
+				\begin{equation}
+				\begin{array}{c}{\mathbf{a}_{s}=\operatorname{softmax}\left(M L P\left(\mathbf{S}_{c a}\right)\right) \in \mathbb{R}^{l_{s} \times 1}} \\ {\mathbf{s}_{s a}=\mathbf{a}_{s}^{\top} \mathbf{S}_{c a} \in \mathbb{R}^{1 \times 2 h}}\end{array}
+				\end{equation}
+	\item Reasoning over HDE graph\\
+	\begin{equation}
+		\mathbf{z}_{i}^{k}=\sum_{r \in \mathcal{R}} \frac{1}{\left|\mathcal{N}_{i}^{r}\right|} \sum_{j \in \mathcal{N}_{i}^{r}} f_{r}\left(\mathbf{h}_{j}^{k}\right)
+		\end{equation}
+		\begin{equation}
+			\mathbf{u}_{i}^{k}=f_{s}\left(\mathbf{h}_{i}^{k}\right)+\mathbf{z}_{i}^{k}
+			\end{equation}
+			\begin{equation}
+			\begin{array}{c}{\mathbf{g}_{i}^{k}=\operatorname{sigmoid}\left(f_{g}\left(\left[\mathbf{u}_{i}^{k} ; \mathbf{h}_{i}^{k}\right]\right)\right)} \\ {\mathbf{h}_{i}^{k+1}=\tanh \left(\mathbf{u}_{i}^{k}\right) \odot \mathbf{g}_{i}^{k}+\mathbf{h}_{i}^{k} \odot\left(1-\mathbf{g}_{i}^{k}\right)}\end{array}
+			\end{equation}
+	\item Score accumulation\\
+	\begin{equation}
+		\mathbf{a}=f_{C}\left(\mathbf{H}^{C}\right)+A C C_{\max }\left(f_{E}\left(\mathbf{H}^{E}\right)\right)
+		\end{equation}
+\end{enumerate}
+
+\newpage
+\section{Explore, Propose, and Assemble:
+An Interpretable Model for Multi-Hop Reading Comprehension}
+本文也是应用于multi-hop multi-document的一篇文章，提出了Explore-Propose-Assemble reader (EPAr)模型。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{7-1.png}
+\end{figure}
+\begin{enumerate}
+	\item  Retrieval and Encoding:\\使用TF-IDF算法来先筛选出一部分的document，减少计算量。
+	\item  Document Explorer：\\用document-level的representation和word-level的representation分别作为Memory Network
+	的Key和value。
+
+	Read：\begin{equation}
+		x_{n}=p_{n}^{T} \mathbf{W}_{\mathbf{r}} m^{t} \quad \chi=\operatorname{softmax}(x) \quad P\left(d_{i}\right)=\chi_{i}
+		\end{equation}
+	
+	Write：\begin{equation}
+	\begin{array}{rlrl}{w_{k}} & {=h_{k}^{T} \mathbf{W}_{\mathbf{w}} m} & {\tilde{h}} & {=\sum_{k=1}^{K} h_{k} \omega_{k}} \\ {\omega} & {=\operatorname{softmax}(w)} & {m^{t+1}} & {=\mathbf{G} \mathbf{R} \mathbf{U}\left(\tilde{h}, m^{t}\right)}\end{array}
+	\end{equation}
+	\item  Answer Proposer
+	\begin{equation}
+	\begin{aligned} e_{i}^{k} &=\mathbf{v}^{T} \tanh \left(\mathbf{W}_{\mathbf{h}} \hat{h}_{c c t}^{i}+\mathbf{W}_{\mathbf{s}} s^{k}+\mathbf{b}\right) \\ a^{k} &=\operatorname{softmax}\left(e^{k}\right) ; \quad c^{k}=\sum_{i} a_{i}^{k} h_{c c t}^{i} \\ y^{k} &=\mathbf{L} \mathbf{S} \mathbf{T} \mathbf{M}\left(\hat{h}_{T}^{k-1}, s^{k-1}, c^{k-1}\right) \\ w^{k} &=\boldsymbol{\alpha}\left(y^{k}, u_{s}\right)+\boldsymbol{\alpha}\left(y^{k}, u_{b}\right) ; \epsilon=\operatorname{softmax}(w) \end{aligned}
+	\end{equation}
+	\begin{equation}
+		a=\sum_{k=1}^{K} \hat{h}_{T}^{k} \epsilon_{k} ; \quad \text { Score }_{l}=\boldsymbol{\beta}\left(c_{l}, a\right)
+		\end{equation}
+	\item  Evidence Assembler：\\将相关的sentence拼接起来，送入传统的单document算法模型。
+	\item  Joint Optimization
+\end{enumerate}
 \end{document}
