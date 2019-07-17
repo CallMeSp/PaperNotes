@@ -24,6 +24,7 @@
 \usepackage{amsmath} 
 \usepackage{graphicx}
 \usepackage{subfigure}
+\usepackage{url}
 \newmdtheoremenv{thm-box}{myThm}
 \newmdtheoremenv{prop-box}{Proposition}
 \newmdtheoremenv{def-box}{定义}
@@ -314,6 +315,8 @@ $$
 \section{Explore, Propose, and Assemble:
 An Interpretable Model for Multi-Hop Reading Comprehension}
 本文也是应用于multi-hop multi-document的一篇文章，提出了Explore-Propose-Assemble reader (EPAr)模型。
+首先，Document Explorer迭代地选择相关文档并在树结构中表示不同的推理链，以便吸收来自所有链的信息。然后，Answer-Proposer从推理树中的每个根到叶路径提出一个答案。
+最后Evidence Assembler从每个路径中提取包含建议答案的关键语句，并将它们组合以预测最终答案。
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{7-1.png}
@@ -340,4 +343,78 @@ An Interpretable Model for Multi-Hop Reading Comprehension}
 	\item  Evidence Assembler：\\将相关的sentence拼接起来，送入传统的单document算法模型。
 	\item  Joint Optimization
 \end{enumerate}
+\newpage
+\section{Multi-hop Reading Comprehension
+through Question Decomposition and Rescoring}
+本文提出了一种创新的方法来解决multi-hop的阅读理解问题，没有在神经网络的结构上做文章，而是在数据上做文章，将原始的mult-hop的question分解文多个single-hop的问题，然后用传统的RC模型去回答问题，然后将答案再进行整合。
+代码地址：\url{https://github.com/shmsw25/DecompRC}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{8-1.png}
+	\caption{原问题分解的三种目标子类型}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{8-1.png}
+	\caption{整体的目标结构}
+\end{figure}
+\begin{equation}
+	U=\operatorname{BERT}(S) \in \mathbb{R}^{n \times h}
+	\end{equation}
+	\begin{equation}
+		Y=\operatorname{softmax}(U W) \in \mathbb{R}^{n \times c}
+		\end{equation}
+
+\begin{equation}
+\operatorname{ind}_{1}, \ldots, \operatorname{ind}_{c}=\underset{i_{1} \leq \cdots \leq i_{c}}{\operatorname{argmax}} \prod_{j=1}^{c} \mathbb{P}\left(i_{j}=\operatorname{ind}_{j}\right)
+\end{equation}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{8-3.png}
+	\caption{生成分割点的算法}
+\end{figure}
+
+\newpage
+\section{Dynamically Fused Graph Network for Multi-hop Reasoning}
+本文也是一篇关于Mult-hop的用GNN来处理的文章。亮点在于GNN推理的时候，使用了一个soft-mask，可以理解为只做了一个局部的信息传播。
+模型可以划分为以下步骤：
+\begin{enumerate}
+	\item Paragraph Selection:\\分别将paragraph和Query作为输入送入Bert，然后通过一个SIGMOD来预测其相关性，筛选出部分最相关的paragraph。
+	\item Constructing Entity Graph:\\用Stanford coreNLP工具来做实体抽取，作为node，然后以下三种情况nodes间有边：
+	\subitem[1] 两个实体出现在同一句话中。
+	\subitem[2] 对于在上下文中具有相同提及文本的每对实体。
+	\subitem[3] 在同一段中的中央实体节点和其他实体之间。
+	\item Encoding Query and Context:使用bert即可。
+	\item Reasoning with the Fusion Block：\\
+	Document to Graph flow:\\将entity含有的word的embedding通过max和mean池化层得到所需向量。\\
+	Dynamic Graph Attention：
+	\begin{equation}
+	\begin{aligned} \tilde{\mathbf{q}}^{(t-1)} &=\operatorname{MeanP} \operatorname{ooling}\left(\mathbf{Q}^{(t-1)}\right) \\ \gamma_{i}^{(t)} &=\tilde{\mathbf{q}}^{(t-1)} \mathbf{V}^{(t)} \mathbf{e}_{i}^{(t-1)} / \sqrt{d_{2}} \\ \mathbf{m}^{(t)} &=\sigma\left(\left[\gamma_{1}^{(t)}, \cdots, \gamma_{N}^{(t)}\right]\right) \\ \tilde{\mathbf{E}}^{(t-1)} &=\left[m_{1}^{(t)} \mathbf{e}_{1}^{(t-1)}, \ldots, m_{N}^{(t)} \mathbf{e}_{N}^{(t-1)}\right] \end{aligned}
+	\end{equation}
+	\begin{equation}
+	\begin{aligned} \mathbf{h}_{i}^{(t)} &=\mathbf{U}_{t} \tilde{\mathbf{e}}_{i}^{(t-1)}+\mathbf{b}_{t} \\ \beta_{i, j}^{(t)} &=\text { LeakyReLU }\left(\mathbf{W}_{t}^{\top}\left[\mathbf{h}_{i}^{(t)}, \mathbf{h}_{j}^{(t)}\right]\right) \\ \alpha_{i, j}^{(t)} &=\frac{\exp \left(\beta_{i, j}^{(t)}\right)}{\sum_{k} \exp \left(\beta_{i, k}^{(t)}\right)} \end{aligned}
+	\end{equation}
+	\begin{equation}
+		\mathbf{e}_{i}^{(t)}=\operatorname{ReLU}\left(\sum_{j \in B_{i}} \alpha_{j, i}^{(t)} \mathbf{h}_{j}^{(t)}\right)
+		\end{equation}
+		\begin{equation}
+			\mathbf{Q}^{(t)}=\mathrm{Bi}-\mathrm{Attention}\left(\mathbf{Q}^{(t-1)}, \mathbf{E}^{(t)}\right)
+			\end{equation}
+	\item Graph to Document Flow:\begin{equation}
+		\mathbf{C}^{(t)}=\operatorname{LSTM}\left(\left[\mathbf{C}^{(t-1)}, \mathbf{M} \mathbf{E}^{(t) \top}\right]\right)
+		\end{equation}
+	\item Prediction:
+	\begin{equation}
+	\begin{aligned} \mathbf{O}_{s u p} &=\mathcal{F}_{0}\left(\mathbf{C}^{(t)}\right) \\ \mathbf{O}_{s t a r t} &=\mathcal{F}_{1}\left(\left[\mathbf{C}^{(t)}, \mathbf{O}_{s u p}\right]\right) \\ \mathbf{O}_{e n d} &=\mathcal{F}_{2}\left(\left[\mathbf{C}^{(t)}, \mathbf{O}_{s u p}, \mathbf{O}_{s t a r t}\right]\right) \\ \mathbf{O}_{t y p e} &=\mathcal{F}_{3}\left(\left[\mathbf{C}^{(t)}, \mathbf{O}_{s u p}, \mathbf{O}_{e n d}\right]\right) \end{aligned}
+	\end{equation}
+\end{enumerate}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{9-2.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{9-3.png}
+\end{figure}
 \end{document}
