@@ -145,4 +145,21 @@ Step7}
 \section{Emotion-Cause Pair Extraction:A New Task to Emotion Analysis in Texts}
 情绪原因提取（Emotion cause extraction ，ECE）是一项旨在提取文本中某些情绪背后潜在原因的任务，近年来由于其广泛的应用而受到了很多关注。然而，它有两个缺点：1）情绪必须在ECE原因提取之前进行标注，这极大地限制了它在现实场景中的应用；2）先标注情绪然后提取原因的方式忽略了它们是相互指示的事实。
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{3-1.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{3-2.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{3-3.png}
+\end{figure}
+
+这篇文章的创新点就是提出了一个新的任务 emotion-cause pair extraction (ECPE)，相较于传统的ECE不用依赖于事先的情感标注。
+其次使用2-step的结构，第一步提取出E和C（有两种结构，一种E和C之间相互独立，另一种是有联系的），第二步进行筛选。
+
+总体算法很简单，只使用了Bi-LSTM和attention结构，核心是提出一个新的Task。
 \end{document}
