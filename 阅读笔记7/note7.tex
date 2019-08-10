@@ -247,4 +247,63 @@ ACL19最佳论文
 	\centering
 	\includegraphics[width=0.6\textwidth]{8-1.png}
 \end{figure}
+
+\newpage
+\section{SGM: Sequence Generation Model for Multi-Label Classification}
+本文是文本多标签分类领域的一个工作，首次在这个领域引入了seq2seq的结构，并且引入了global embedding解决了exposure bias。
+通过decoder中的lstm输出，建立了标签之间的相关性。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{9-1.png}
+\end{figure}
+\begin{equation}
+	p(\boldsymbol{y} | \boldsymbol{x})=\prod_{i=1}^{n} p\left(y_{i} | y_{1}, y_{2}, \cdots, y_{i-1}, \boldsymbol{x}\right)
+	\end{equation}
+Attention：
+\begin{equation}
+\begin{aligned} e_{t i} &=\boldsymbol{v}_{a}^{T} \tanh \left(\boldsymbol{W}_{a} \boldsymbol{s}_{t}+\boldsymbol{U}_{a} \boldsymbol{h}_{i}\right) \\ \alpha_{t i} &=\frac{\exp \left(e_{t i}\right)}{\sum_{j=1}^{m} \exp \left(e_{t j}\right)} \end{aligned}
+\end{equation}
+\begin{equation}
+	c_{t}=\sum_{i=1}^{m} \alpha_{t i} h_{i}
+	\end{equation}
+Decoder：
+\begin{equation}
+	s_{t}=\operatorname{LSTM}\left(s_{t-1},\left[g\left(\boldsymbol{y}_{t-1}\right) ; \boldsymbol{c}_{t-1}\right]\right)
+	\end{equation}
+	\begin{equation}
+	\begin{aligned} \boldsymbol{o}_{t} &=\boldsymbol{W}_{o} f\left(\boldsymbol{W}_{d} \boldsymbol{s}_{t}+\boldsymbol{V}_{d} \boldsymbol{c}_{t}\right) \\ \boldsymbol{y}_{t} &=\operatorname{softmax}\left(\boldsymbol{o}_{t}+\boldsymbol{I}_{t}\right) \end{aligned}
+	\end{equation}
+	\begin{equation}
+	\left(I_{t}\right)_{i}=\left\{\begin{array}{ll}{-\infty} & {\text { if the label } l_{i} \text { has been predicted at previous } t-1 \text { time steps. }} \\ {0} & {\text { otherwise. }}\end{array}\right.
+	\end{equation}
+GLobal Embedding:
+\begin{equation}
+	\overline{e}=\sum_{i=1}^{L} y_{t-1}^{(i)} e_{i}
+	\end{equation}
+	\begin{equation}
+		g\left(\boldsymbol{y}_{t-1}\right)=(\mathbf{1}-\boldsymbol{H}) \odot \boldsymbol{e}+\boldsymbol{H} \odot \overline{\boldsymbol{e}}
+		\end{equation}
+		\begin{equation}
+			\boldsymbol{H}=\boldsymbol{W}_{1} \boldsymbol{e}+\boldsymbol{W}_{2} \overline{\boldsymbol{e}}
+			\end{equation}
+
+
+\newpage
+\section{Multi-Label Image Recognition with Graph Convolutional Networks}
+这篇文章是CV领域的多标签分类问题。亮点是对label用stacked GCN来处理，从而解决其相关性问题。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{10-1.png}
+\end{figure}
+\begin{equation}
+	\boldsymbol{H}^{l+1}=h\left(\widehat{\boldsymbol{A}} \boldsymbol{H}^{l} \boldsymbol{W}^{l}\right)
+	\end{equation}
+
+	其中$\boldsymbol{W}^l$是一个学习参数，$\widehat{\boldsymbol{A}}$是相关性矩阵的正则化后的结果。
+
+	stacked GCN的第一层输入是$Z \in \mathbb{R}^{C \times d}$，最后一层输出是$\boldsymbol{W} \in \mathbb{R}^{C \times D}$
+
+	于是，可以得到C个label的预测结果：$\hat{\boldsymbol{y}}=\boldsymbol{W} \boldsymbol{x}$
+
+	GCN中的C个node即为C个label上的分类器。
 \end{document}
