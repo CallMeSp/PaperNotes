@@ -56,7 +56,7 @@
 \usepackage{layout}                                             
 \footskip = 10pt 
 \pagestyle{fancy}                    % 设置页眉                 
-\lhead{研一下学期}                    
+\lhead{研二上学期}                    
 \chead{论文阅读笔记}                                                
 % \rhead{第\thepage/\pageref{LastPage}页} 
 \rhead{Step8}                                                                                               
@@ -155,4 +155,53 @@ $H^{(l+1)}=\sigma\left(\tilde{D}^{-\frac{1}{2}} \tilde{A} \tilde{D}^{-\frac{1}{2
 			\centering
 			\includegraphics[width=0.6\textwidth]{4-1.png}
 		\end{figure}
+
+\newpage
+\section{Attention Guided Graph Convolutional Networks for Relation Extraction}
+motivation是现有的方法采用基于规则的硬剪枝策略来选择相关的部分依赖结构，但并不总是能得到最优的结果。本文提出了使用GCN来soft-pruning自动学习如何有选择地处理对关系提取任务有用的相关子结构。
+被称为Attention Guided Graph Convolutional Networks。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{5-22.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{5-1.png}
+\end{figure}
+GCNs：
+\begin{align}
+	\mathbf{h}_{i}^{(l)}=\rho\left(\sum_{j=1}^{n} \mathbf{A}_{i j} \mathbf{W}^{(l)} \mathbf{h}_{j}^{(l-1)}+\mathbf{b}^{(l)}\right)
+	\end{align}
+Attention Guided Layer：
+\begin{align}
+	\tilde{\mathbf{A}}^{(\mathrm{t})}=\operatorname{softmax}\left(\frac{Q \mathbf{W}_{i}^{Q} \times\left(K \mathbf{W}_{i}^{K}\right)^{T}}{\sqrt{d}}\right)
+	\end{align}
+Densely Connected Layer：
+\begin{align}
+	\mathbf{g}_{j}^{(l)}=\left[\mathbf{x}_{j} ; \mathbf{h}_{j}^{(1)} ; \ldots ; \mathbf{h}_{j}^{(l-1)}\right]
+	\end{align}
+	\begin{align}
+		\mathbf{h}_{t_{i}}^{(l)}=\rho\left(\sum_{j=1}^{n} \tilde{\mathbf{A}}_{i j}^{(t)} \mathbf{W}_{t}^{(l)} \mathbf{g}_{j}^{(l)}+\mathbf{b}_{t}^{(l)}\right)
+		\end{align}
+Linear Combination Layer:
+$$h_{comb} = W_{comb}h_{out}+b_{comb}$$
+$$h_{out} = [h^{(1)};...;h^{(n)}]$$
+
+\newpage
+\section{Learning a Deep ConvNet for Multi-label Classification with Partial Labels}
+本文解决的问题是只有Partial Label的多标签分类问题。贡献点一个是提出了一个新的针对partial的损失函数，其次使用GNN来对multi-label之间的关系进行建模，最后还能通过此算法来对没有提供label的那一部分进行预测。
+
+$$l(x,y)=\frac{g(p_y)}{C} \sum_{c=1}^{C}[1_{[y_c =1 ]}log(\frac{1}{1+exp(-x_c)})+1_{[y_c =-1 ]}log(\frac{exp(-x_c)}{1+exp(-x_c)})] $$
+这是对应的损失函数，其中$p_y$是该条数据中，有标签的label所占的比例，g是正则化函数。
+
+GNN用于Multi-Label：\\
+Message update：\\
+$$m_v^t = \frac{1}{|\Omega_v|}\sum_{u \in \Omega_v}f_{M}(h_u^t)$$
+Hidden state update:\\
+$$ h_v^{t+1}=GRU(h_v^t,m_b^t) $$
+
+
+\newpage
+\section{Inferential Machine Comprehension: Answering Questions by Recursively Deducing the Evidence Chain from Text}
+
 \end{document}
