@@ -197,11 +197,93 @@ $$l(x,y)=\frac{g(p_y)}{C} \sum_{c=1}^{C}[1_{[y_c =1 ]}log(\frac{1}{1+exp(-x_c)})
 GNN用于Multi-Label：\\
 Message update：\\
 $$m_v^t = \frac{1}{|\Omega_v|}\sum_{u \in \Omega_v}f_{M}(h_u^t)$$
-Hidden state update:\\
+Hidden state update:\\   
 $$ h_v^{t+1}=GRU(h_v^t,m_b^t) $$
 
 
 \newpage
 \section{Inferential Machine Comprehension: Answering Questions by Recursively Deducing the Evidence Chain from Text}
+这篇文章主要是解决阅读理解中的多跳推理问题，这里提出了一个Operation Cell，以及一个termination机制，在train的过程中，递归的执行Cell，termination机制负责决定什么时候停止。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{7-1.png}
+	\caption{Overview}
+\end{figure}
+主要有四个组成部分：
+\begin{enumerate}
+	\item Memory：负责存储中间结果
+	\item Master：用self-attention来分析question，在每一个step上focus在特定的aspect上
+	\item Reader：根据question aspect和text content来抽取出相关的text content
+	\item Writer：整合previous的results，生成新的临时结果。
+\end{enumerate}
 
+\newpage
+\section{A STRUCTURED SELF-ATTENTIVE SENTENCE EMBEDDING}
+介绍了一种提取句子embedding的方法。通过attention机制，提取出句子重要的r个部分。类似r个head的Attention，然后引入类似KL散度的惩罚项，鼓励不同的head计算出不同的侧重点。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{8-1.png}
+	\caption{Overview}
+\end{figure}
+
+\newpage
+\section{Coherent Comment Generation for Chinese Articles with a Graph-to-Sequence Model}
+本文解决的问题是自动生成文章评论,提出了一个模型：将文章表示为Topic之间相互联系的图，然后又提出了一个graph-to-sequence模型来生成评论。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{9-1.png}
+\end{figure}
+1.Graph Construction：
+
+用TextRank算法抽取关键词，每一个vertex包含一个keyword和含有这个词的sentence，然后如果一个sentence中包含多个keyword，那么对应的节点之间建立联系。
+
+2.Vertex Encoder：
+
+先Embedding，然后Self-Attention。然后用keyword的vector来表示这个节点。
+
+3.Graph Encoder：
+
+用GCN来更新节点。
+
+4.Decoder：
+
+送入带有attention机制的RNN来输出结果。
+
+\newpage
+\section{BERT with History Answer Embedding for Conversational Question Answering}
+就是在原本的bert的每一个word的embedding中添加了一个所谓的History Answer Embedding (HAE)，来标记这个单词在history中有没有出现过。
+而这里的history selection则是naive的选取最近的几个question-answer pair。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{10-1.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{10-2.png}
+\end{figure}
+
+\newpage
+\section{GRAPHFLOW: Exploiting Conversation Flow with Graph Neural Networks for Conversational Machine Comprehension}
+对话型阅读理解的工作，不知道是不是得益于Bert，效果比FlowQA得F1高0.8。
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{11-1.png}
+\end{figure}
+主要创新：
+
+1.构建图的方式：
+
+$$ A=ReLU(UW_C^{(i)})^TReLU(UW_C^{(i)}) $$
+这里就用self-attention机制来构建一个attention矩阵来充当邻接矩阵的功能，另外避免过多的计算开销以及全连接的话大多数相邻点其实没有多少作用,所以用了一个KNN-style的方法，过滤掉大部分无用的消耗。
+
+2.GraphFlow过程中的Fuse：
+
+\begin{align*}
+	C_i^l &= GNN(\overline{C_i^{l-1}},\widetilde{A_C^{(i)}})\\
+	\overline{C_i^{l-1}} &= Fuse(C_{i,j}^{l-1},C_{i-1,j}^{l})
+\end{align*}
+
+Advance：
+
+构件图的方式感觉不是很intuitive，有待改进。另外，跟进一下和FlowQA的对比试验，采用同样的Embedding。
 \end{document}
